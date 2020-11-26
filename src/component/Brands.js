@@ -3,8 +3,7 @@ import * as Mui from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 
-
-class Posts extends Component{
+class Brands extends Component{
   constructor(props){
    super(props);
 
@@ -14,7 +13,7 @@ class Posts extends Component{
 }
 
  componentDidMount(){
-   const apiUrl = 'https://jsonfy.com/posts';
+   const apiUrl = 'https://jsonfy.com/brands';
    fetch(apiUrl)
      .then((response) => response.json())
      .then((data) => this.setState({data: data}));
@@ -26,7 +25,7 @@ class Posts extends Component{
 
     return (
       <div>
-            <Mui.AppBar position="fixed">
+      <Mui.AppBar position="fixed">
         <Mui.Toolbar>
           <Mui.IconButton
             edge="start"            
@@ -59,26 +58,18 @@ class Posts extends Component{
         </Mui.Toolbar>
       </Mui.AppBar><br/>
      <Mui.Container fixed>
-     <h1 style={{ textAlign:'center', backgroundColor:'black', color:'white' }}>Data Posts</h1>
+     <h1 style={{ textAlign:'center', backgroundColor:'black', color:'white' }}>Data Brands</h1>
         <table border="1">
           <tr style={{ textAlign:'center', backgroundColor:'red' }}>
             <td>Id</td>
-            <td>Use_Pos_Fk</td>
-            <td>Title</td>
-            <td>Excerpt</td>
-            <td>Body</td>
-            <td>Date_Add</td>
-            <td>Date_Upd</td>
+            <td>Name</td>
+            <td>Logo_Url</td>
           </tr>
           {data.map(todo =>
             <tr key={todo.id} style={{ textAlign:'center', color :'white', backgroundSize:"cover" ,backgroundImage:"url(https://lh3.googleusercontent.com/proxy/1XRLcw2QHO-DHNjzquhPDtCRpgioXVlvL02INotIhm_f58ty2g5hwPRrvmw_BJ4vAS1ldDTVD4KCg3iUOvKoqqes4JPuDg5OpCXwrX-Qud3jn139hoYNwtiNglCnAMcuj2WMNKMy3GjQLFqh7lLAda7eIjR4bZAK_BkWWPPmFw)" }}>
               <td>{todo.id}</td>
-              <td>{todo.use_pos_fk}</td>
-              <td>{todo.title}</td>
-              <td>{todo.excerpt}</td>
-              <td>{todo.body}</td>
-              <td>{todo.date_add}</td>
-              <td>{todo.date_upd}</td>
+              <td>{todo.name}</td>
+              <td>{todo.logo_url}</td>
             </tr>
             )}
         </table>
@@ -88,4 +79,4 @@ class Posts extends Component{
   }
 }
 
-export default Posts;
+export default Brands;
